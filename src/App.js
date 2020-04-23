@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import { Route } from 'react-router-dom';
+import { BrowserRouter, Switch } from 'react-router-dom';
+import Login from './components/login';
+import MovieContainer from './components/MovieContainer';
+import Watchlist from './components/Watchlist'
+import Navbar from './components/Navbar'
+import Seen from './components/Seen'
 
-function App() {
+
+
+class App extends Component {
+  render() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className='App'>
+        <Navbar />
+        <Switch>
+          <Route path='/login' component={Login}/>
+          <Route path='/movies' component={MovieContainer} />
+          <Route path='/watchlist' component={Watchlist} />
+          <Route path='/seen' component={Seen} />
+        </Switch>
+      </div>
+    </BrowserRouter>
   );
+  }
 }
 
 export default App;
